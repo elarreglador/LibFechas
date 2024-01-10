@@ -17,6 +17,7 @@ public class LibFechas {
     int numMes;
     int numYear;
 
+    //CONSTRUCTOR
     public LibFechas(int fechaBase){
         this.fechaBase = fechaBase;        
         numDia = Math.abs(fechaBase) % 100;
@@ -24,6 +25,8 @@ public class LibFechas {
         numYear = fechaBase / 10000;
         diaSemana = calculaDiaSemana();
     }
+
+
 
     public String calculaDiaSemana(){
         String fechaStr = String.valueOf(fechaBase);
@@ -61,12 +64,32 @@ public class LibFechas {
         }
     }
     
+    public boolean esAnteriorA(LibFechas segundaFecha){
+        if (this.fechaBase>segundaFecha.getFechaBase()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean esPosteriorA(LibFechas segundaFecha){
+        if (this.fechaBase<segundaFecha.getFechaBase()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public String getDiaSemana(){
         return diaSemana;
     }
 
     public String getDiaSemanaYFecha(){
         return diaSemana + " " + numDia + "/" + numMes + "/" + numYear;
+    }
+
+    public int getFechaBase(){
+        return fechaBase;
     }
 
     public int getNumDia(){
